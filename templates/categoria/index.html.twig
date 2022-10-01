@@ -18,8 +18,8 @@
                     <td>{{categoria.id}}</td>
                     <td>{{categoria.descricaoCategoria}}</td>
                     <td>
-                        <a href="#" class="btn btn-primary">Editar</a>
-                        <a href="#" class="btn btn-primary">Excluir</a>
+                        <a href="{{ path('categoria_editar', {id: categoria.id}) }}" class="btn btn-primary">Editar</a>
+                        <a href="{{ path('categoria_excluir', {id: categoria.id}) }}" class="btn btn-primary">Excluir</a>
                     </td>
                 </tr>
             {% endfor %}
