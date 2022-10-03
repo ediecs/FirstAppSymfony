@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block title %} Página Consulta de Produtos {% endblock %}
+{% block body %}
+    <h1>{{titulo}}</h1>
+    <a href="{{ path('produto_adicionar') }}" class="btn btn-primary">+ Adicionar</a>
+
+    <table class='table'>
+        <thead>
+            <tr>
+                <td>#</td>
+                <td>Nome</td>
+                <td>Categoria</td>
+                <td>Valor</td>
+                <td>Ações</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produto in produtos %}
+                <tr>
+                    <td>{{produto.id}}</td>
+                    <td>{{produto.nomeProduto}}</td>
+                    <td>{{produto.categoria.descricaoCategoria}}</td>
+                    <td>{{produto.valor}}</td>
+                    <td>
+                        <a href="{{ path('produto_editar', {id: produto.id}) }}" class="btn btn-primary">Editar</a>
+                        <a href="{{ path('produto_excluir', {id: produto.id}) }}" class="btn btn-primary">Excluir</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
