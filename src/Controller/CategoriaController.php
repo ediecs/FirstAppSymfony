@@ -10,11 +10,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class CategoriaController extends AbstractController
 {
     /**
      *@Route("/categoria", name="categoria_index")
+     *@IsGranted("ROLE_USER")
      */
     public function index(CategoriaRepository $categoriaRepository): Response
     {
@@ -26,6 +28,7 @@ class CategoriaController extends AbstractController
 
     /**
      *@Route("/categoria/adicionar", name="categoria_adicionar")
+     *@IsGranted("ROLE_USER")
      */
     public function adicionar(Request $request, EntityManagerInterface $em): Response
     {
@@ -47,6 +50,7 @@ class CategoriaController extends AbstractController
 
      /**
      *@Route("/categoria/editar/{id}", name="categoria_editar")
+     *@IsGranted("ROLE_USER")
      */
     public function editar($id, Request $request, EntityManagerInterface $em, CategoriaRepository $categoriaRepository): Response
     {
@@ -69,6 +73,7 @@ class CategoriaController extends AbstractController
 
      /**
      *@Route("/categoria/excluir/{id}", name="categoria_excluir")
+     *@IsGranted("ROLE_USER")
      */
     public function excluir($id, EntityManagerInterface $em, CategoriaRepository $categoriaRepository): Response
     {
