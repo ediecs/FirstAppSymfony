@@ -10,12 +10,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
 class ProdutoController extends AbstractController
 {
     /**
      *@Route("/produto", name="produto_index")
+     *@IsGranted("ROLE_USER")
      */
     public function index(ProdutoRepository $produtoRepository)
     {
@@ -26,6 +28,7 @@ class ProdutoController extends AbstractController
 
     /**
      *@Route("/produto/adicionar", name="produto_adicionar")
+     *@IsGranted("ROLE_USER")
      */
     public function adicionar(Request $request, EntityManagerInterface $em): Response
     {
@@ -48,6 +51,7 @@ class ProdutoController extends AbstractController
 
     /**
      *@Route("/produto/editar/{id}", name="produto_editar")
+     *@IsGranted("ROLE_USER")
      */
     public function editar($id, Request $request, EntityManagerInterface $em, ProdutoRepository $produtoRepository): Response
     {
@@ -68,6 +72,7 @@ class ProdutoController extends AbstractController
 
     /**
      *@Route("/produto/excluir/{id}", name="produto_excluir")
+     *@IsGranted("ROLE_USER")
      */
     public function excluir($id, EntityManagerInterface $em, ProdutoRepository $produtoRepository)
     {
