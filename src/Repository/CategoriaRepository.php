@@ -39,6 +39,15 @@ class CategoriaRepository extends ServiceEntityRepository
         }
     }
 
+    public function findCategoriaByLikeDescricao($descricaoCategoria)
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.descricaoCategoria LIKE :descricaoCategoria')
+            ->setParameter('descricaoCategoria', "%$descricaoCategoria%")
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Categoria[] Returns an array of Categoria objects
 //     */

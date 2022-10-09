@@ -39,6 +39,15 @@ class ProdutoRepository extends ServiceEntityRepository
         }
     }
 
+    public function findProdutoByLikeNome($nomeProduto)
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.nomeProduto LIKE :nomeProduto')
+            ->setParameter('nomeProduto', "%$nomeProduto%")
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Produto[] Returns an array of Produto objects
 //     */
